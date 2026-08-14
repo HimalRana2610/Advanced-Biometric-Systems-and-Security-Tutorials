@@ -1,0 +1,42 @@
+{
+  "layout_check": {
+    "user_major_ratio": 0.4421835319833274,
+    "sample_major_ratio": 1.0098032167705329
+  },
+  "results": [
+    {
+      "matcher": "Euclidean distance",
+      "score_type": "distance",
+      "n_genuine": 500,
+      "n_impostor": 49500,
+      "mu_genuine": 291.6160469527521,
+      "sd_genuine": 135.59539732263673,
+      "mu_impostor": 703.8227764410127,
+      "sd_impostor": 301.79484777480127,
+      "eer_percent": 11.511111111111111,
+      "eer_threshold": 429.23944835620995,
+      "decidability_index": 1.7619353587108937,
+      "roc_auc": 0.9495562424242424,
+      "tar_at_far_1pct": 0.662,
+      "tar_at_far_0.1pct": 0.546,
+      "rank1_identification": 0.878
+    },
+    {
+      "matcher": "Cosine similarity",
+      "score_type": "similarity",
+      "n_genuine": 500,
+      "n_impostor": 49500,
+      "mu_genuine": 0.989501168181278,
+      "sd_genuine": 0.010967878861049501,
+      "mu_impostor": 0.9603761712110512,
+      "sd_impostor": 0.018366674241932467,
+      "eer_percent": 8.4,
+      "eer_threshold": 0.9789998029190186,
+      "decidability_index": 1.925413778186122,
+      "roc_auc": 0.9689432323232323,
+      "tar_at_far_1pct": 0.836,
+      "tar_at_far_0.1pct": 0.742,
+      "rank1_identification": 0.908
+    }
+  ]
+}

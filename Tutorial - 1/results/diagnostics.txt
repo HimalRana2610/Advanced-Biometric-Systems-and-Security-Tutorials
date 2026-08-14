@@ -1,0 +1,33 @@
+==============================================================================
+Diagnostics -- isolating the feature-magnitude channel
+==============================================================================
+
+1. Does feature-vector magnitude vary, and is it stable over six months?
+   Coefficient of variation of ||x|| within a user   : 0.0535
+   Coefficient of variation of ||x|| across users    : 0.1910
+   Test/enrollment mean-norm ratio per user          : mean 0.9916, sd 0.0569, range [0.825, 1.154]
+   -> magnitude drifts by up to ~17% between enrollment and test, and it also
+      differs systematically between users (across-user CV is ~3.6x within-user).
+
+2. How much of the Euclidean score is magnitude rather than pattern?
+   corr(Euclidean, |norm difference|), genuine       : 0.5820
+   corr(Euclidean, |norm difference|), impostor      : 0.8999
+   d' of |norm difference| used alone as a matcher   : 1.1649
+   -> the Euclidean impostor axis is very largely a magnitude axis, though
+      magnitude is not pure noise: on its own it still separates somewhat.
+
+3. Removing the magnitude channel from Euclidean matching
+   ||p_hat - t_hat||^2 vs (2 - 2cos), max abs error  : 2.193e-15
+
+   matcher                                  EER           AUC   d-prime
+   --------------------------------------------------------------------
+   Euclidean distance                  11.5111%    0.94955624    1.7619
+   Cosine similarity                    8.4000%    0.96894323    1.9254
+   Euclidean on unit-norm vectors       8.4000%    0.96894323    2.4770
+
+   -> L2-normalising before Euclidean matching reproduces the cosine EER and
+      AUC exactly, so the entire raw-Euclidean/cosine performance gap is due to
+      the magnitude channel and nothing else.
+   -> note that d' differs (2.4770 vs 1.9254) even though the ROC is identical:
+      d' is invariant to affine rescaling but not to the nonlinear sqrt relating
+      the two scores, so d' should be read alongside EER and AUC, not alone.

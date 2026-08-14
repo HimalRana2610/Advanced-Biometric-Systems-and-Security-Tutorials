@@ -1,0 +1,48 @@
+==============================================================================
+AI461 Assignment 1 — Biometric verification performance (test set)
+==============================================================================
+
+Protocol
+  Users                       : 100
+  Samples per user            : 10 (1-5 enrollment, 6-10 test)
+  Feature dimension           : 144
+  Templates                   : 100 (mean of the 5 enrollment vectors)
+  Test probes                 : 500 (5 per user)
+  Comparisons                 : 50,000 (500 genuine + 49,500 impostor)
+
+Layout sanity check (mean within-user / between-user distance ratio)
+  user-major   (assumed, 10 consecutive columns per user) : 0.4422
+  sample-major (rejected alternative)                     : 1.0098
+
+------------------------------------------------------------------------------
+Euclidean distance  (distance; accept if score <= threshold)
+------------------------------------------------------------------------------
+  Genuine   : mu = 291.616047   sigma = 135.595397   n = 500
+  Impostor  : mu = 703.822776   sigma = 301.794848   n = 49,500
+
+  Equal Error Rate (EER)      : 11.511 %   at threshold 429.239448
+  Decidability index (d')     : 1.7619
+  ROC AUC                     : 0.949556
+  TAR @ FAR = 1%              : 66.20 %
+  TAR @ FAR = 0.1%            : 54.60 %
+  Rank-1 identification       : 87.80 %   (supplementary)
+
+------------------------------------------------------------------------------
+Cosine similarity  (similarity; accept if score >= threshold)
+------------------------------------------------------------------------------
+  Genuine   : mu = 0.989501   sigma = 0.010968   n = 500
+  Impostor  : mu = 0.960376   sigma = 0.018367   n = 49,500
+
+  Equal Error Rate (EER)      : 8.400 %   at threshold 0.979000
+  Decidability index (d')     : 1.9254
+  ROC AUC                     : 0.968943
+  TAR @ FAR = 1%              : 83.60 %
+  TAR @ FAR = 0.1%            : 74.20 %
+  Rank-1 identification       : 90.80 %   (supplementary)
+
+==============================================================================
+Verdict
+==============================================================================
+  Lowest EER : Cosine similarity (8.400 %)
+  Highest d' : Cosine similarity (1.9254)
+  Highest AUC: Cosine similarity (0.968943)

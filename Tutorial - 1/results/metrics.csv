@@ -1,0 +1,3 @@
+matcher,score_type,n_genuine,n_impostor,mu_genuine,sd_genuine,mu_impostor,sd_impostor,eer_percent,eer_threshold,decidability_index,roc_auc,tar_at_far_1pct,tar_at_far_0.1pct,rank1_identification
+Euclidean distance,distance,500,49500,291.616047,135.5953973,703.8227764,301.7948478,11.51111111,429.2394484,1.761935359,0.9495562424,0.662,0.546,0.878
+Cosine similarity,similarity,500,49500,0.9895011682,0.01096787886,0.9603761712,0.01836667424,8.4,0.9789998029,1.925413778,0.9689432323,0.836,0.742,0.908
